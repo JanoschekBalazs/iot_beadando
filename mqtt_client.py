@@ -1,10 +1,10 @@
 import paho.mqtt.client as mqtt
 import threading
 
-def on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
-
 def connect_telemetry(data_supplier):
+
+    def on_message(client, userdata, msg):
+        print(msg.topic+" "+str(msg.payload))
 
     def send():
         data = data_supplier()
@@ -22,4 +22,3 @@ def connect_telemetry(data_supplier):
     client.username_pw_set(data_supplier().get("token"), "")
     client.connect("127.0.0.1", 1883, 60)
     client.loop_forever()
-
