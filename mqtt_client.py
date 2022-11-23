@@ -4,7 +4,7 @@ import threading
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
 
-def connect_device(data_supplier):
+def connect_telemetry(data_supplier):
 
     def send():
         data = data_supplier()
